@@ -26,6 +26,17 @@ Before running the application, ensure you have **FFmpeg** installed on your sys
    winget install ffmpeg
    ```
 
+## Prerequisites (Windows)
+
+Before running the application, ensure you have **FFmpeg** installed on your system. `yt-dlp` requires FFmpeg to process downloads and merge video/audio streams.
+
+1. Open Command Prompt or PowerShell.
+2. Run the following command:
+   
+   ```cmd
+   winget install ffmpeg
+   ```
+
 ## Installation & Setup
 
 1. **Clone the repository:**

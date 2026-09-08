@@ -39,23 +39,22 @@ ctk.CTkLabel(app, text="Enter custom filename (leave blank for default):").pack(
 filename_entry = ctk.CTkEntry(app, width=420)
 filename_entry.pack(pady=5)
 
-# --- Progress Bar & Status Widgets ---
+
 progress_bar = ctk.CTkProgressBar(app, width=420)
 progress_bar.pack(pady=(15, 5))
-progress_bar.set(0)  # Reset to 0%
+progress_bar.set(0)
 
 status_label = ctk.CTkLabel(app, text="", font=("Arial", 12))
 status_label.pack(pady=5)
 
-# Progress Hook Callback
+
 def gui_progress_hook(d):
-    """Updates the CTkProgressBar and status_label in real-time."""
     if d['status'] == 'downloading':
         total = d.get('total_bytes') or d.get('total_bytes_estimate') or 0
         downloaded = d.get('downloaded_bytes', 0)
         
         if total > 0:
-            percent = downloaded / total  # Scale: 0.0 to 1.0 for CTkProgressBar
+            percent = downloaded / total
             speed = d.get('_speed_str', 'N/A').strip()
             eta = d.get('_eta_str', 'N/A').strip()
 
@@ -82,14 +81,13 @@ def start_download():
         status_label.configure(text="Error: Selected save directory does not exist.", text_color="red")
         return
 
-    # Reset UI State
+
     download_btn.configure(state="disabled")
     progress_bar.set(0)
     status_label.configure(text="Initializing download...", text_color="#5DADE2")
 
     def run_backend():
         try:
-            # Pass our GUI hook function to download_video
             download_video(url, folder_path, custom_filename, progress_callback=gui_progress_hook)
             status_label.configure(text="Download Finished Successfully!", text_color="green")
 
@@ -109,7 +107,7 @@ def start_download():
             status_label.configure(text=f"Error: {e}", text_color="red")
             
         finally:
-            download_btn.configure(state="normal")  # Re-enable button when done
+            download_btn.configure(state="normal")
 
     download_thread = threading.Thread(target=run_backend, daemon=True)
     download_thread.start()
