@@ -14,6 +14,17 @@ A Python GUI app made using CustomTkinter that uses yt-dlp to download YouTube v
 - **GUI Framework:** [CustomTkinter](https://github.com/TomSchimansky/CustomTkinter)
 - **Backend Core:** [yt-dlp](https://github.com/yt-dlp/yt-dlp)
 - **Concurrency:** `threading` (Python Standard Library)
+- 
+## Prerequisites (Windows)
+
+Before running the application, ensure you have **FFmpeg** installed on your system. `yt-dlp` requires FFmpeg to process downloads and merge video/audio streams.
+
+1. Open Command Prompt or PowerShell.
+2. Run the following command:
+   
+   ```cmd
+   winget install ffmpeg
+   ```
 
 ## Installation & Setup
 
